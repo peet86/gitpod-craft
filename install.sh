@@ -5,6 +5,7 @@ echo "( (__  )   //    \ ) _)   )(    (___)  ( (_ \ )(   )(   ) __/(  O )) D ( "
 echo " \___)(__\_)\_/\_/(__)   (__)           \___/(__) (__) (__)   \__/(____/ "
 echo " "
 echo "  I N S T A L L  C R A F T "
+echo " "
 echo "-------------------------------------------------------------------------"
 echo " 1. CRAFT INSTALL"
 echo "-------------------------------------------------------------------------"
@@ -53,7 +54,11 @@ echo " 4. WORKSPACE URL SETUP"
 echo "-------------------------------------------------------------------------"
 
 # init current urls
-gitpod/url-update.sh
+if [ -f gitpod-custom/url-update.sh ]; then
+    gitpod-custom/url-update.sh
+else 
+    gitpod/url-update.sh
+fi
 
 echo "-------------------------------------------------------------------------"
 echo " 5. DONE."
