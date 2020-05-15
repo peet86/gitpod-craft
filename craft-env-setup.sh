@@ -1,11 +1,16 @@
+#!/bin/bash
 
-read -p "> Live Server Database: " remote_db
+read -p "> Database Host (eg. 127.0.0.1): " server
 
-read -p "> Live Server Database User: " remote_db_user
+read -p "> Database Port (eg. 3306): " port
 
-read -p "> Live Server Database Password: " remote_db_password
+read -p "> Database Name: " db
 
-read -p "> Live Server Database Table prefix: " remote_db_prefix
+read -p "> Database User: " user
+
+read -p "> Database Password: " password
+
+read -p "> Database Table prefix: " prefix
 
 read -p "> Craft Security key: " security_key
 
@@ -21,25 +26,25 @@ gp env SECURITY_KEY="$security_key"
 gp env DB_DRIVER="mysql"
 
 # The database server name or IP address (usually this is 'localhost' or '127.0.0.1')
-gp env DB_SERVER="127.0.0.1"
+gp env DB_SERVER="$server"
 
 # The database username to connect with
-gp env DB_USER="$remote_db_user"
+gp env DB_USER="$user"
 
 # The database password to connect with
-gp env DB_PASSWORD="$remote_db_password"
+gp env DB_PASSWORD="$password"
 
 # The name of the database to select
-gp env DB_DATABASE="$remote_db"
+gp env DB_DATABASE="$db"
 
 # The database schema that will be used (PostgreSQL only)
 gp env DB_SCHEMA="public"
 
 # The prefix that should be added to generated table names (only necessary if multiple things are sharing the same database)
-gp env DB_TABLE_PREFIX="$remote_db_prefix"
+gp env DB_TABLE_PREFIX="$prefix"
 
 # The port to connect to the database with. Will default to 5432 for PostgreSQL and 3306 for MySQL.
-gp env DB_PORT="3306"
+gp env DB_PORT="$port"
 
 gp env ASSET_URL="$live_url"
 
