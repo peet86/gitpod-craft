@@ -46,6 +46,10 @@ gp env DB_TABLE_PREFIX="$prefix"
 # The port to connect to the database with. Will default to 5432 for PostgreSQL and 3306 for MySQL.
 gp env DB_PORT="$port"
 
+# Craft 3.4 DB_DSN 
+gp env DB_DSN="mysql:host=${DB_SERVER};port=${DB_PORT};dbname=${DB_NAME}"
+
+# Asset url
 gp env ASSET_URL="$live_url"
 
 eval $(gp env -e) 
