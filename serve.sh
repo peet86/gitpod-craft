@@ -18,15 +18,15 @@ gitpod/mysql-tunnel.sh
 
 echo "> Update PHP configuration"
 if [ -f gitpod-custom/php-fpm.conf ]; then
-    gitpod-custom/php-fpm.conf
+    cp gitpod-custom/php-fpm.conf /etc/php/7.4/fpm/php-fpm.conf
 else 
-    gitpod/php-fpm.conf
+    cp gitpod/php-fpm.conf /etc/php/7.4/fpm/php-fpm.conf
 fi
 
 if [ -f gitpod-custom/php.ini ]; then
-    gitpod-custom/php.ini
+    cp gitpod-custom/php.ini /etc/php/7.4/fpm/php.ini
 else 
-    gitpod/php.ini
+    cp gitpod/php.ini /etc/php/7.4/fpm/php.ini
 fi
 
 echo "> Start/restart php-fpm"
@@ -35,9 +35,9 @@ killall -KILL php-fpm
 
 echo "> Update Nginx configuration"
 if [ -f gitpod-custom/nginx.conf ]; then
-    gitpod-custom/nginx.conf
+    cp gitpod-custom/nginx.conf /etc/nginx/nginx.conf
 else 
-    gitpod/nginx.conf
+    cp gitpod/nginx.conf /etc/nginx/nginx.conf
 fi
 
 echo "> Start/reload nginx"
